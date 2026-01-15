@@ -1,17 +1,38 @@
+// Get the API URL from environment variable or use localhost as default
+const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
 
 const nextConfig = {
   reactStrictMode: false,
   distDir: ".next-build",
   
 
-  // Rewrites for development - proxy font requests to FastAPI backend
+  // Rewrites for proxying API requests to the FastAPI backend
   async rewrites() {
-    return [
-      {
+    const rewrites = [];
+
+    // Only add API rewrites if NEXT_PUBLIC_API_URL is configured (for Vercel deployment)
+    if (process.env.NEXT_PUBLIC_API_URL) {
+      rewrites.push({
+        source: '/api/v1/:path*',
+        destination: `${apiUrl}/api/v1/:path*`,
+      });
+      rewrites.push({
+        source: '/app_data/:path*',
+        destination: `${apiUrl}/app_data/:path*`,
+      });
+      rewrites.push({
+        source: '/static/:path*',
+        destination: `${apiUrl}/static/:path*`,
+      });
+    } else {
+      // Default rewrite for local development (fonts only)
+      rewrites.push({
         source: '/app_data/fonts/:path*',
-        destination: 'http://localhost:8000/app_data/fonts/:path*',
-      },
-    ];
+        destination: `${apiUrl}/app_data/fonts/:path*`,
+      });
+    }
+
+    return rewrites;
   },
 
   images: {

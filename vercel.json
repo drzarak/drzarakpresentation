@@ -1,0 +1,11 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "cd servers/nextjs && npm install && npm run build",
+  "outputDirectory": "servers/nextjs/.next-build",
+  "installCommand": "cd servers/nextjs && npm install",
+  "framework": "nextjs",
+  "env": {
+    "APP_DATA_DIRECTORY": "/tmp/app_data",
+    "TEMP_DIRECTORY": "/tmp/presenton"
+  }
+}

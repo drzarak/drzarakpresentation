@@ -10,6 +10,10 @@
   <a href="https://x.com/presentonai">
     <img src="https://img.shields.io/badge/X-Follow%20Us-000000?logo=twitter&style=for-the-badge" alt="Follow us on X" />
   </a>
+  &nbsp;
+  <a href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fdrzarak%2Fdrzarakpresentation&env=OPENAI_API_KEY,LLM&envDescription=Configure%20your%20AI%20provider%20API%20keys&envLink=https%3A%2F%2Fgithub.com%2Fdrzarak%2Fdrzarakpresentation%23deployment-configurations&project-name=presenton&repository-name=presenton">
+    <img src="https://vercel.com/button" alt="Deploy with Vercel" />
+  </a>
 </p>
 
 # Open-Source AI Presentation Generator and API (Gamma, Beautiful AI, Decktopus Alternative)
@@ -55,6 +59,30 @@ Presenton gives you complete control over your AI presentation workflow. Choose 
   
   <img src="readme_assets/cloud-banner.png" height="350" alt="Presenton Logo" />
 </a>
+
+## Deploy to Vercel
+
+Deploy Presenton to Vercel with one click. You'll be prompted to enter your API keys during the deployment process.
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fdrzarak%2Fdrzarakpresentation&env=OPENAI_API_KEY,LLM&envDescription=Configure%20your%20AI%20provider%20API%20keys&envLink=https%3A%2F%2Fgithub.com%2Fdrzarak%2Fdrzarakpresentation%23deployment-configurations&project-name=presenton&repository-name=presenton)
+
+### Vercel Environment Variables
+
+When deploying to Vercel, you'll need to configure the following environment variables:
+
+| Variable | Required | Description |
+|----------|----------|-------------|
+| `OPENAI_API_KEY` | Yes (if using OpenAI) | Your OpenAI API key |
+| `LLM` | Yes | The LLM provider to use (`openai`, `google`, `anthropic`) |
+| `GOOGLE_API_KEY` | Yes (if using Google) | Your Google AI API key |
+| `ANTHROPIC_API_KEY` | Yes (if using Anthropic) | Your Anthropic API key |
+| `IMAGE_PROVIDER` | No | Image generation provider (`dall-e-3`, `gemini_flash`, `pexels`, `pixabay`) |
+| `PEXELS_API_KEY` | No | Pexels API key (if using Pexels for images) |
+| `PIXABAY_API_KEY` | No | Pixabay API key (if using Pixabay for images) |
+| `CAN_CHANGE_KEYS` | No | Set to `false` to hide API key configuration in UI |
+| `NEXT_PUBLIC_API_URL` | No | External API URL if hosting backend separately |
+
+> **Note:** Vercel deployment runs the Next.js frontend. For full functionality including AI generation, ensure your backend API is accessible. For a complete self-hosted solution, consider using Docker deployment.
 
 ## Running Presenton Docker
 
